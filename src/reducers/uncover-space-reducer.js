@@ -1,8 +1,8 @@
 export default (state = {}, action) => {
   switch (action.type) {
   case 'UNCOVER':
-    action.covered = false;
-    return action.covered;
+  console.log("UNCOVER");
+    return action.spaceId;
   default:
     return state;
   }

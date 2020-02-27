@@ -2,21 +2,24 @@ import React from 'react';
 import Space from './Space';
 import PropTypes from 'prop-types';
 
-function Board(props){
+function Board(props) {
+  console.log('This is props.spaceList:');
+  console.log(props.spaceList);
+
   return (
     <div>
       <hr/>
       {Object.keys(props.spaceList).map(function(spaceId) {
-        var ticket = props.spaceList[spaceId];
+        var space = props.spaceList[spaceId];
         return (
           <Space covered={space.covered}
           mine={space.mine}
           xCoordinate={space.xCoordinate}
           yCoordinate={space.yCoordinate}
-          spaceId={space.spaceId}
-          key={space.spaceId}/>
+          spaceId={spaceId}
+          key={spaceId}/>
         )
-      })};
+      })}
     </div>
   );
 }
