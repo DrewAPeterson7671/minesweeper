@@ -1,6 +1,6 @@
-export default (state = { masterSpaceList: {} }, action) => {
+export default (state = {}, action) => {
   let newState;
-  const { covered, mine, xCoordinate, yCoordinate, id } = action;
+  const { covered, mine, xCoordinate, yCoordinate, coordinates, id } = action;
 
   switch (action.type) {
     case 'POPULATE':
@@ -10,9 +10,27 @@ export default (state = { masterSpaceList: {} }, action) => {
           mine: mine,
           xCoordinate: xCoordinate,
           yCoordinate: yCoordinate,
+          coordinates: coordinates,
           id: id
         }
       });
+      return newState;
+    case 'MINEIFY':
+    console.log('MINEIFY');
+      newState = Object.assign({}, state, {
+        [coordinates]: {
+          mine: true
+        }
+      });
+      console.log(newState);
+      return newState;
+    case 'UNCOVER':
+      newState = Object.assign({}, state, {
+        [id]: {
+          covered: false
+        }
+      });
+      console.log(state);
       return newState;
     default:
       return state;

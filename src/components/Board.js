@@ -3,22 +3,25 @@ import Space from './Space';
 import PropTypes from 'prop-types';
 
 function Board(props) {
-  console.log('This is props.spaceList:');
-  console.log(props.spaceList);
 
   return (
-    <div>
-      <hr/>
+    <div className='grid-container'>
       {Object.keys(props.spaceList).map(function(spaceId) {
         var space = props.spaceList[spaceId];
-        return (
-          <Space covered={space.covered}
-          mine={space.mine}
-          xCoordinate={space.xCoordinate}
-          yCoordinate={space.yCoordinate}
-          spaceId={spaceId}
-          key={spaceId}/>
-        )
+        if (props.spaceList) {
+          return (
+            <div className='grid-item'>
+              <Space covered={space.covered}
+              mine={space.mine}
+              xCoordinate={space.xCoordinate}
+              yCoordinate={space.yCoordinate}
+              spaceId={spaceId}
+              key={spaceId}/>
+            </div>
+          )
+        } else {
+          return <div><a href='/#/fillboard'>FILL BOARD</a></div>
+        }
       })}
     </div>
   );

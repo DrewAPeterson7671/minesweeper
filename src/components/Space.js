@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 function Space(props){
 
   function handleUncoverSpace(spaceId){
-    console.log("goodclick");
+    console.log(props.mine);
     const { dispatch } = props;
     const action = {
       type: 'UNCOVER',
-      spaceId: spaceId
+      id: spaceId
     };
     dispatch(action);
   }
@@ -17,20 +17,22 @@ function Space(props){
   if (props.covered === true) {
     return (
       <div className='greySpace' onClick={() => {handleUncoverSpace(props.spaceId)}}>
-        <p>Covered space</p>
+      <p>{props.xCoordinate}, {props.yCoordinate}</p>
+      <p>{props.coordinates}</p>
       </div>
     );
   } else if (props.covered === false) {
-    if (props.mine === false) {
-      return <div className='greenSpace'>
-        <p>Not a mine</p>
-      </div>
-    } else {
+    if (props.mine === true) {
       return <div className='redSpace'>A mine! SPOOPY!</div>
+    } else {
+      return <div className='greenSpace'>
+      <p>Not a mine</p>
+      </div>
     }
   } else {
-    return <div></div>
+    return null
   }
+
 }
 
 Space.propTypes = {
@@ -38,7 +40,8 @@ Space.propTypes = {
   mine: PropTypes.bool.isRequired,
   xCoordinate: PropTypes.number.isRequired,
   yCoordinate: PropTypes.number.isRequired,
-  spaceId: PropTypes.string.isRequired
+  spaceId: PropTypes.string.isRequired,
+  coordinates: PropTypes.string.isRequired
 };
 
 export default connect()(Space);

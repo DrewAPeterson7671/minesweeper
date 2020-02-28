@@ -4,6 +4,7 @@ import Board from './components/Board';
 import FillBoard from './components/FillBoard';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './App.css'; 
 
 class App extends React.Component {
 

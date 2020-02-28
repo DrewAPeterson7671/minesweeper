@@ -1,9 +1,17 @@
-export default (state = {}, action) => {
-  switch (action.type) {
-  case 'UNCOVER':
-  console.log("UNCOVER");
-    return action.spaceId;
-  default:
-    return state;
-  }
-};
+// export default (state = {}, action) => {
+//   let newState;
+//   const { covered, id } = action;
+//
+//   switch (action.type) {
+//   case 'UNCOVER':
+//     newState = Object.assign({}, state, {
+//       [id]: {
+//         covered: false
+//       }
+//     });
+//     return newState;
+//
+//   default:
+//     return state;
+//   }
+// };
